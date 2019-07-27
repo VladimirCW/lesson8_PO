@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Main_suite">
+    <test name="Main_test">
+        <classes>
+            <class name="test.java.Test.MaintTest"/>
+        </classes>
+    </test>
+</suite>
