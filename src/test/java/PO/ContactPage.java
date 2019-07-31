@@ -13,17 +13,20 @@ public class ContactPage extends BasePage{
     By contactHeader = By.xpath("//h1");
 
     public ContactPage isShown() {
+        logger.info("Open Contact page");
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(contactHeader));
         return this;
     }
 
     public ContactPage selectCityDnipro() {
+        logger.info("Select city Dnipro");
         wait.until(ExpectedConditions.elementToBeClickable(dniproCity));
         driver.findElement(dniproCity).click();
         return this;
     }
 
     public ContactPage clickContactCard() {
+        logger.info("Click contact card");
         wait.until(ExpectedConditions.elementToBeClickable(contactsCard));
         driver.findElement(contactsCard).click();
         return this;
