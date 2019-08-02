@@ -29,7 +29,7 @@ public class HomePage extends BasePage{
         logger.fatal("FATAL logger");
 
         driver.manage().window().maximize();
-        driver.get("http://iteaua-develop.demo.gns-it.com/");
+        driver.get("http://iteaua-develop.demo.gns-it.com/uk/about_itea/");
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(contactsBtn));
         return this;
     }

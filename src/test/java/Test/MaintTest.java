@@ -19,16 +19,12 @@ import java.util.List;
 
 import static org.testng.Assert.assertTrue;
 
-public class MaintTest {
+public class MaintTest extends TestBaseSetup{
     HomePage homePage;
     ContactPage contactPage;
-    WebDriver driver;
 
     @BeforeMethod
-    public void init() {
-        System.setProperty("webdriver.chrome.driver"
-                , "C:\\Users\\Volodymyr_Dmytriukhi\\WebDriver\\chromedriver_win32v75\\chromedriver.exe");
-        driver = new ChromeDriver();
+    public void init2() {
         homePage = new HomePage(driver);
         contactPage = new ContactPage(driver);
     }
@@ -42,10 +38,5 @@ public class MaintTest {
                 .clickContactCard();
         homePage.openNigthCourses();
         assertTrue(homePage.checkDayCoursesArePresent());
-    }
-
-    @AfterMethod
-    public void finilize() {
-        driver.quit();
     }
 }
