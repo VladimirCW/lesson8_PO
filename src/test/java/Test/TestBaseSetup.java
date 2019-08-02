@@ -2,10 +2,12 @@ package test.java.Test;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import test.java.PO.ContactPage;
 import test.java.PO.HomePage;
+import test.java.Utils.Screenshot;
 
 public class TestBaseSetup {
     WebDriver driver;
@@ -18,7 +20,9 @@ public class TestBaseSetup {
     }
 
     @AfterMethod
-    public void finilize() {
+    public void finilize(ITestResult result) {
+        Screenshot screenshot = new Screenshot(driver);
+        screenshot.makeScreenShot(result);
         driver.quit();
     }
 }

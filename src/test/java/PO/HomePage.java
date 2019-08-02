@@ -22,8 +22,8 @@ public class HomePage extends BasePage{
 
     public HomePage isShown() {
         logger.trace("Trace log");
-        logger.info("Open home page");
         logger.debug("Debug loger");
+        logger.info("Open home page");
         logger.warn("WARN logger");
         logger.error("ERROR logger");
         logger.fatal("FATAL logger");
