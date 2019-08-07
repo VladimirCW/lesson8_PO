@@ -1,8 +1,15 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Main_suite">
+    <listeners>
+        <listener class-name="test.java.Utils.Listener"/>
+    </listeners>
     <test name="Main_test">
         <classes>
-            <class name="test.java.Test.MaintTest"/>
+            <class name="test.java.Test.MaintTest">
+                <methods>
+                    <include name="testMessage"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>

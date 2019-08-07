@@ -36,7 +36,7 @@ public class MaintTest extends TestBaseSetup{
         contactPage.isShown()
                 .selectCityDnipro()
                 .clickContactCard();
-        homePage.openNigthCourses();
-        assertTrue(homePage.checkDayCoursesArePresent());
+        /*homePage.openNigthCourses();
+        assertTrue(homePage.checkDayCoursesArePresent());*/
     }
 }
