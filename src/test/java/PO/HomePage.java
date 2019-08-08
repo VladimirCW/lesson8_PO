@@ -1,5 +1,6 @@
 package test.java.PO;
 
+import io.qameta.allure.Step;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -14,6 +15,8 @@ import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.fail;
 
 public class HomePage extends BasePage {
+    String name = "Vasya";
+    String password = "123";
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -21,14 +24,23 @@ public class HomePage extends BasePage {
 
     By contactsBtn = By.xpath("//a[contains(@href, 'our-contacts')]");
 
+    @Step("Home page is shown")
     public HomePage isShown() {
         logger.info("Home page is shown");
         driver.manage().window().maximize();
         driver.get("http://iteaua-develop.demo.gns-it.com/uk/about_itea/");
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(contactsBtn));
+        this.countToThree(777);
+        //driver.findElement(By.xpath("//a[@id='11111111111111']")).click();
         return this;
     }
 
+    @Step("Count to Three {i}")
+    private void countToThree(int i) {
+        int j = i;
+    }
+
+    @Step("Open contact page")
     public HomePage openContactPage() {
         logger.info("Open Contact page with paramenter");
         wait.until(ExpectedConditions.elementToBeClickable(contactsBtn));

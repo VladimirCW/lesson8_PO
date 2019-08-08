@@ -6,8 +6,12 @@
     </listeners>
     <test name="Main_test2">
         <classes>
-            <class name="test.java.Test.MaintTest"/>
-            <class name="test.java.Test.MaintTest2"/>
+            <class name="test.java.Test.MaintTest">
+                <methods>
+                    <include name="testMessage"/>
+                </methods>
+            </class>
+            <!--<class name="test.java.Test.MaintTest2"/>-->
         </classes>
     </test>
 </suite>

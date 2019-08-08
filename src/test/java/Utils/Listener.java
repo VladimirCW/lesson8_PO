@@ -20,6 +20,7 @@ public class Listener implements ITestListener, ISuiteListener, IInvokedMethodLi
         ITestContext context = iTestResult.getTestContext();
         WebDriver driver = (WebDriver) context.getAttribute("webDriver");
         Screenshot screenshot = new Screenshot(driver);
+        //screenshot.getScreenshot();
         screenshot.makeScreenShot(iTestResult);
     }
 

@@ -1,5 +1,6 @@
 package test.java.Utils;
 
+import io.qameta.allure.Attachment;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -19,7 +20,8 @@ public class Screenshot {
     }
 
 
-    public void makeScreenShot(ITestResult result) {
+    public String makeScreenShot(ITestResult result) {
+        //getScreenshot();
         TakesScreenshot screenshot = (TakesScreenshot) driver;
         File src = screenshot.getScreenshotAs(OutputType.FILE);
         Path currentRelativePath = Paths.get("");
@@ -32,5 +34,12 @@ public class Screenshot {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return src.toString();
+    }
+
+    @Attachment
+    public byte[] getScreenshot() {
+        TakesScreenshot screenshot = (TakesScreenshot) driver;
+        return screenshot.getScreenshotAs(OutputType.BYTES);
     }
 }
