@@ -2,12 +2,11 @@
 <suite name="Main_suite">
     <listeners>
         <listener class-name="test.java.Utils.Listener"/>
-        <listener class-name="test.java.Utils.AnnotationTransformer"></listener>
     </listeners>
     <test name="Main_test2">
         <classes>
-            <class name="test.java.Test.MaintTest"/>
-            <class name="test.java.Test.MaintTest2"/>
+            <class name="test.java.Test.MaintTest">
+            </class>
         </classes>
     </test>
 </suite>

@@ -11,6 +11,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import test.java.PO.ContactPage;
 import test.java.PO.HomePage;
+import test.java.Utils.RetryAnalizer;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.testng.Assert.assertTrue;
+import static org.testng.FileAssert.fail;
 
 public class MaintTest extends TestBaseSetup{
     HomePage homePage;
@@ -33,10 +35,12 @@ public class MaintTest extends TestBaseSetup{
     public void testMessage() {
         homePage.isShown()
                 .openContactPage();
-        contactPage.isShown()
-                .selectCityDnipro()
-                .clickContactCard();
-        /*homePage.openNigthCourses();
-        assertTrue(homePage.checkDayCoursesArePresent());*/
+        fail();
+    }
+    @Test
+    public void testMessage2() {
+        homePage.isShown()
+                .openContactPage();
+        //fail();
     }
 }

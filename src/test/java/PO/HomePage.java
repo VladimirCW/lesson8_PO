@@ -1,4 +1,5 @@
 package test.java.PO;
+
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -12,7 +13,7 @@ import java.util.List;
 import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.fail;
 
-public class HomePage extends BasePage{
+public class HomePage extends BasePage {
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -21,13 +22,7 @@ public class HomePage extends BasePage{
     By contactsBtn = By.xpath("//a[contains(@href, 'our-contacts')]");
 
     public HomePage isShown() {
-        logger.trace("Trace log");
-        logger.debug("Debug loger");
-        logger.info("Open home page");
-        logger.warn("WARN logger");
-        logger.error("ERROR logger");
-        logger.fatal("FATAL logger");
-
+        logger.info("Home page is shown");
         driver.manage().window().maximize();
         driver.get("http://iteaua-develop.demo.gns-it.com/uk/about_itea/");
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(contactsBtn));
@@ -53,8 +48,8 @@ public class HomePage extends BasePage{
         String arr[] = {"Тестування", "Frontend development"};
         List<String> courses = Arrays.asList(arr);
         List<WebElement> list = driver.findElements(By.xpath("//h2"));
-        for(WebElement el: list) {
-            if(!courses.contains(el.getText())){
+        for (WebElement el : list) {
+            if (!courses.contains(el.getText())) {
                 System.out.println(String.format("Expected courses to contain '%s'.", el.getText()));
                 return false;
             }
