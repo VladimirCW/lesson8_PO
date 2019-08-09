@@ -75,10 +75,10 @@ public class HomePage extends BasePage {
 
     public HomePage openEveningCourses() {
         Actions action = new Actions(driver);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(eveningCourses));
-        action.moveToElement(driver.findElement(eveningCourses)).perform();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(coursesBtn));
-        driver.findElement(coursesBtn).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@id='menu-item-7956']")));
+        action.moveToElement(driver.findElement(By.xpath("//li[@id='menu-item-7956']"))).perform();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@id='menu-item-7885']")));
+        driver.findElement(By.xpath("//li[@id='menu-item-7885']")).click();
         return this;
     }
 }
