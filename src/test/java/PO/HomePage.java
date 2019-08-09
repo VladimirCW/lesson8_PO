@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import test.java.Utils.PropertyLoader;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,7 +25,7 @@ public class HomePage extends BasePage {
     public HomePage isShown() {
         logger.info("Home page is shown");
         driver.manage().window().maximize();
-        driver.get("http://iteaua-develop.demo.gns-it.com/uk/about_itea/");
+        driver.get(PropertyLoader.getProperty("url"));
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(contactsBtn));
         return this;
     }
