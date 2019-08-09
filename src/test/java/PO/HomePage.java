@@ -1,5 +1,6 @@
 package test.java.PO;
 
+import io.qameta.allure.Step;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -22,7 +23,9 @@ public class HomePage extends BasePage {
 
     By contactsBtn = By.xpath("//a[contains(@href, 'our-contacts')]");
 
-    public HomePage isShown() {
+    @Step("Home page is shown {login}")
+    public HomePage isShown(String login) {
+        driver.findElement(By.xpath("//div[@id=1111111111]")).click();
         logger.info("Home page is shown");
         driver.manage().window().maximize();
         driver.get(PropertyLoader.getProperty("url"));
@@ -30,6 +33,7 @@ public class HomePage extends BasePage {
         return this;
     }
 
+    @Step("Open contact page")
     public HomePage openContactPage() {
         logger.info("Open Contact page with paramenter");
         wait.until(ExpectedConditions.elementToBeClickable(contactsBtn));

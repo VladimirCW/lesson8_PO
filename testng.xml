@@ -7,7 +7,6 @@
     <test name="Main_test2">
         <classes>
             <class name="test.java.Test.MaintTest"/>
-            <class name="test.java.Test.MaintTest2"/>
         </classes>
     </test>
 </suite>

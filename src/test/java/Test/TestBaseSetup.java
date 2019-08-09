@@ -13,7 +13,7 @@ import test.java.Utils.Screenshot;
 public class TestBaseSetup {
     WebDriver driver;
 
-    @BeforeMethod
+    @BeforeMethod(description = "Initialize custom driver")
     public void init(ITestContext context) {
         System.setProperty("webdriver.chrome.driver"
                 , "C:\\Users\\Volodymyr_Dmytriukhi\\WebDriver\\chromedriver_win32v75\\chromedriver.exe");
@@ -21,7 +21,7 @@ public class TestBaseSetup {
         context.setAttribute("webDriver", driver);
     }
 
-    @AfterMethod
+    @AfterMethod (description = "Finilize custom driver")
     public void finilize(ITestResult result) {
         driver.quit();
     }
