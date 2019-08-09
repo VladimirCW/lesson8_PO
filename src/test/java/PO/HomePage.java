@@ -6,8 +6,10 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import javax.swing.*;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,6 +25,8 @@ public class HomePage extends BasePage {
     }
 
     By contactsBtn = By.xpath("//a[contains(@href, 'our-contacts')]");
+    By eveningCourses = By.xpath("//li[@id='menu-item-7956']");
+    By coursesBtn = By.xpath("//li[@id='menu-item-7885']");
 
     @Step("Home page is shown")
     public HomePage isShown() {
@@ -50,7 +54,7 @@ public class HomePage extends BasePage {
 
     public HomePage openNigthCourses() {
         logger.info("open night courses");
-        driver.get("http://iteaua-develop.demo.gns-it.com/courses_itea/");
+        driver.get("http://iteaua-develop.demo.gns-it.com/");
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//h2)[23]")));
         return this;
     }
@@ -67,5 +71,14 @@ public class HomePage extends BasePage {
             }
         }
         return true;
+    }
+
+    public HomePage openEveningCourses() {
+        Actions action = new Actions(driver);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(eveningCourses));
+        action.moveToElement(driver.findElement(eveningCourses)).perform();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(coursesBtn));
+        driver.findElement(coursesBtn).click();
+        return this;
     }
 }

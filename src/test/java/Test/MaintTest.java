@@ -28,7 +28,8 @@ public class MaintTest extends TestBaseSetup{
     @Test(description = "Initial test should be passed")
     public void testMessage() {
         homePage.isShown()
-                .openContactPage();
+                .openEveningCourses();
+                //.openContactPage();
         //fail();
     }
 
