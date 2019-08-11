@@ -23,9 +23,8 @@ public class HomePage extends BasePage {
 
     By contactsBtn = By.xpath("//a[contains(@href, 'our-contacts')]");
 
-    @Step("Home page is shown {login}")
-    public HomePage isShown(String login) {
-        driver.findElement(By.xpath("//div[@id=1111111111]")).click();
+    @Step("Home page is shown ")
+    public HomePage isShown() {
         logger.info("Home page is shown");
         driver.manage().window().maximize();
         driver.get(PropertyLoader.getProperty("url"));

@@ -17,14 +17,12 @@ public class MaintTest2 extends TestBaseSetup{
 
     @Test
     public void testMessage() {
-        homePage.isShown("Vasya")
+        homePage.isShown()
                 .openContactPage();
-        //fail();
     }
     @Test
     public void testMessage2() {
-        homePage.isShown("Vasya")
+        homePage.isShown()
                 .openContactPage();
-        //fail();
     }
 }

@@ -42,14 +42,13 @@ public class MaintTest extends TestBaseSetup{
     @Link("https://example.org")
     @Test(description = "Initial test should be green")
     public void testMessage() {
-        homePage.isShown("Vasya")
+        homePage.isShown()
                 .openContactPage();
     }
     @Test(description = "Second initial test should be green")
     @Story("Advanced support for bdd annotations")
     public void testMessage2() {
-        homePage.isShown("Vasya")
+        homePage.isShown()
                 .openContactPage();
-        //fail();
     }
 }
