@@ -1,7 +1,9 @@
 pipeline {
     stages{
         stage('Preparation') {
-            echo 'Hello worl'
+            steps {
+                echo "HELLO"
+            }
         }
     }
     //node {
