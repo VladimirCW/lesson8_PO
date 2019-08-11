@@ -13,7 +13,9 @@ pipeline {
             }
         }
         stage('UI tests') {
-            bat '/mvn clean -DsuiteXml=testng.xml test/'
+            steps{
+                bat '/mvn clean -DsuiteXml=testng.xml test/'
+            }
         }
     }
     //node {
