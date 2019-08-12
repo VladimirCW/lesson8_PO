@@ -1,16 +1,20 @@
 package test.java.PO;
 
 import io.qameta.allure.Step;
+import io.qameta.allure.Story;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import test.java.Utils.PropertyLoader;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.fail;
@@ -22,6 +26,9 @@ public class HomePage extends BasePage {
     }
 
     By contactsBtn = By.xpath("//a[contains(@href, 'our-contacts')]");
+    By nightCoursesBtn = By.xpath("(//a[contains(text(), 'Вечірні курси')])[1]");
+    By coursesBtn = By.xpath("(//a[contains(text(), 'Курси')])[1]");
+    By priceHolder = By.xpath("//li[@class='r-total-price-wrapper']//span");
 
     @Step("Home page is shown ")
     public HomePage isShown() {
@@ -40,11 +47,34 @@ public class HomePage extends BasePage {
         return this;
     }
 
+    @Step("Open night courses")
     public HomePage openNigthCourses() {
         logger.info("open night courses");
-        driver.get("http://iteaua-develop.demo.gns-it.com/courses_itea/");
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//h2)[23]")));
+        Actions action = new Actions(driver);
+        wait.until(ExpectedConditions.elementToBeClickable(nightCoursesBtn));
+        action.moveToElement(driver.findElement(nightCoursesBtn)).perform();
+        wait.until(ExpectedConditions.elementToBeClickable(coursesBtn));
+        driver.findElement(coursesBtn).click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='footer']")));
         return this;
+    }
+
+    @Step("Open course {name}")
+    public HomePage openCourse(String name) {
+        logger.info(String.format("Open course '%s'", name));
+        By course = By.xpath(String.format("//h2[text()='%s']/..//a[text()='Переглянути']", name));
+        wait.until(ExpectedConditions.elementToBeClickable(course));
+        driver.findElement(course).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@data-filter='.course-list']")));
+        return this;
+    }
+
+    @Step("Get course prise")
+    public int getCoursePrice() {
+        wait.until(ExpectedConditions.presenceOfElementLocated(priceHolder));
+        String rawPrice = driver.findElement(priceHolder).getText();
+        int price = Integer.parseInt(rawPrice.substring(0, rawPrice.indexOf(" ")));
+        return price;
     }
 
     public boolean checkDayCoursesArePresent() {

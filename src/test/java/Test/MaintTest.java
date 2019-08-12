@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import test.java.PO.ContactPage;
 import test.java.PO.HomePage;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 import static org.testng.FileAssert.fail;
 
@@ -40,15 +42,20 @@ public class MaintTest extends TestBaseSetup{
     })
     @Story("Base support for bdd annotations")
     @Link("https://example.org")
-    @Test(description = "Initial test should be green")
-    public void testMessage() {
+    @Test(description = "Check courses price", dataProvider = "coursesProvider")
+    public void checkCoursesPrice(String courseName, int expectedPrice) {
         homePage.isShown()
-                .openContactPage();
+                .openNigthCourses()
+                .openCourse(courseName);
+        int actualPrice = homePage.getCoursePrice();
+        assertEquals(actualPrice, expectedPrice, String.format("Expected price to be equals '%d' for '%s'", expectedPrice, courseName));
     }
-    @Test(description = "Second initial test should be green")
-    @Story("Advanced support for bdd annotations")
-    public void testMessage2() {
-        homePage.isShown()
-                .openContactPage();
+
+    @DataProvider(name = "coursesProvider")
+    public Object[][] coursesProvider() {
+        return new Object[][] {
+                {"Тестування", 17300},
+                {"Frontend development", 18100}
+        };
     }
 }
